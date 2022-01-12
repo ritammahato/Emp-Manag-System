@@ -2,117 +2,116 @@
     
 <div class="container tb-10">
 
-    <form class="container" (ngSubmit)="submit()">
+    <form class="container" (ngSubmit)="submit()" [formGroup]="multistep">
 
         <!-- Form 1 -->
-        <div *ngIf="isAddEmpFormVisible">
+        <div *ngIf="isAddEmpFormVisible" formGroupName="personalDetails">
             <div >
                 <h3 class="text-light bg-dark text-center m-3">Add Employee</h3>
     
                 <div class="form-group mb-3">
                     <label for="eId">Employee ID</label>
         
-                    <input type="number" class="form-control" id="eId" placeholder="Employee Id">
+                    <input type="number" class="form-control" id="eId" formControlName="empID" placeholder="Employee Id">
                 </div>
         
                 <div class="form-group mb-3">
                     <label for="eFName">First Name</label>
         
-                    <input type="text" class="form-control" id="eFName"  placeholder="First Name">
+                    <input type="text" class="form-control" id="eFName" formControlName="fname" placeholder="First Name">
                 </div>
         
                 <div class="form-group mb-3">
                     <label for="eLName">Last Name</label>
         
-                    <input type="text" class="form-control" id="eLName"  placeholder="Last Name">
+                    <input type="text" class="form-control" id="eLName" formControlName="lname" placeholder="Last Name">
                 </div>
         
                 <div class="form-group mb-3">
                     <label for="eDob">Date Of Birth</label>
         
-                    <input type="text" class="form-control" id="eDob"  placeholder="Date Of Birth">
+                    <input type="text" class="form-control" id="eDob" formControlName="dob" placeholder="Date Of Birth">
                 </div>
             </div>
             <button type="submit" class="btn btn-success mx-2" (click)="addEmpFormClick()">Next</button>
         </div>
         
 
-
-
         <!-- Form 2 -->
-        <div *ngIf="isEduFormVisible && !isAddEmpFormVisible && !isEmpHisFormVisible ">
+        <div *ngIf="isEduFormVisible && !isAddEmpFormVisible && !isEmpHisFormVisible" formGroupName="educationDetails">
             <div >
                 <h3 class="text-light bg-dark text-center m-3">Education Details</h3>
     
                 <div class="form-group mb-3">
                     <label for="eYop">Year Of Passing</label>
         
-                    <input type="text" class="form-control" id="eYop" placeholder="Year Of Passing"> 
+                    <input type="text" class="form-control" id="eYop" formControlName="yop" placeholder="Year Of Passing"> 
                 </div>
         
         
                 <div class="form-group mb-3">
                     <label for="eInstituteName">Institute Name</label>
         
-                    <input type="text" class="form-control" id="eInstituteName" placeholder="Institute Name">
+                    <input type="text" class="form-control" id="eInstituteName" formControlName="instituteName" placeholder="Institute Name">
                 </div>
                 
         
                 <div class="form-group mb-3">
                     <label for="ePercentage">Percentage</label>
         
-                    <input type="text" class="form-control" id="ePercentage" placeholder="Percentage">
+                    <input type="text" class="form-control" id="ePercentage" formControlName="percentage" placeholder="Percentage">
                 </div>
     
             </div>
-            <button type="submit" class="btn btn-success mx-2" (click)="empEduFormClick()">Next</button>
             <button type="submit" class="btn btn-success mx-2" (click)="gotoPrevious1()">Previous</button>
+            <button type="submit" class="btn btn-success mx-2" (click)="empEduFormClick()">Next</button>
         </div>
 
 
-        
         <!-- Form 3 -->
-        <div *ngIf="isEmpHisFormVisible">
+        <div *ngIf="isEmpHisFormVisible" formGroupName="empHistoryDetails">
             <div >
                 <h3 class="text-light bg-dark text-center border border-warning m-3">Employeement History</h3>
     
                 <div class="form-group mb-3">
                     <label for="ePreComName">Previous Company Name</label>
         
-                    <input type="text" class="form-control" id="ePreComName" placeholder="Company Name">
+                    <input type="text" class="form-control" id="ePreComName" formControlName="preCompanyName" placeholder="Company Name">
                 </div>
                 
             
                 <div class="form-group mb-3">
                     <label for="ePreComRole">Role</label>
         
-                    <input type="text" class="form-control" id="ePreComRole" placeholder="Role">
+                    <input type="text" class="form-control" id="ePreComRole" formControlName="role" placeholder="Role">
                 </div>
                 
             
                 <div class="form-group mb-3">
                     <label for="ePreComStartDate">Start Date</label>
         
-                    <input type="text" class="form-control" id="ePreComStartDate" placeholder="Start Date">
+                    <input type="text" class="form-control" id="ePreComStartDate" formControlName="startDate" placeholder="Start Date">
                 </div>
                 
                 <div class="form-group mb-3">
                     <label for="ePreComEndDate">End Date</label>
         
-                    <input type="text" class="form-control" id="ePreComEndDate" placeholder="End Date">
+                    <input type="text" class="form-control" id="ePreComEndDate" formControlName="endDate" placeholder="End Date">
                 </div>
             </div>
-            <button type="submit" class="btn btn-success mx-2">Submit</button>
             <button type="button" class="btn btn-success mx-2" (click)="gotoPrevious2()">Previous</button>
+            <button type="submit" class="btn btn-success mx-2">Submit</button>
         </div>
         
-    
+        <br>
+
+        <pre>{{multistep.value | json}}</pre> 
         <!-- <a class="btn btn-success mx-2" *ngIf="step != 1" (click)="previous()">Previous</a>
         
         <button type="submit" class="btn btn-success mx-2" *ngIf="step == 3">Submit</button> -->
         
     
-        <button class="btn btn-primary" *ngIf="step == 3">Add Another</button>
+        <!-- <button class="btn btn-primary" *ngIf="step == 3">Add Another</button> -->
     </form>
     
     
