@@ -5,99 +5,111 @@
     <form class="container" (ngSubmit)="submit()">
 
         <!-- Form 1 -->
-        <div *ngIf="step == 1">
-            <h3 class="text-light bg-dark text-center m-3">Add Employee</h3>
-
-            <div class="form-group mb-3">
-                <label for="eId">Employee ID</label>
+        <div *ngIf="isAddEmpFormVisible">
+            <div >
+                <h3 class="text-light bg-dark text-center m-3">Add Employee</h3>
     
-                <input type="number" class="form-control" id="eId" placeholder="Employee Id">
+                <div class="form-group mb-3">
+                    <label for="eId">Employee ID</label>
+        
+                    <input type="number" class="form-control" id="eId" placeholder="Employee Id">
+                </div>
+        
+                <div class="form-group mb-3">
+                    <label for="eFName">First Name</label>
+        
+                    <input type="text" class="form-control" id="eFName"  placeholder="First Name">
+                </div>
+        
+                <div class="form-group mb-3">
+                    <label for="eLName">Last Name</label>
+        
+                    <input type="text" class="form-control" id="eLName"  placeholder="Last Name">
+                </div>
+        
+                <div class="form-group mb-3">
+                    <label for="eDob">Date Of Birth</label>
+        
+                    <input type="text" class="form-control" id="eDob"  placeholder="Date Of Birth">
+                </div>
             </div>
-    
-            <div class="form-group mb-3">
-                <label for="eFName">First Name</label>
-    
-                <input type="text" class="form-control" id="eFName"  placeholder="First Name">
-            </div>
-    
-            <div class="form-group mb-3">
-                <label for="eLName">Last Name</label>
-    
-                <input type="text" class="form-control" id="eLName"  placeholder="Last Name">
-            </div>
-    
-            <div class="form-group mb-3">
-                <label for="eDob">Date Of Birth</label>
-    
-                <input type="text" class="form-control" id="eDob"  placeholder="Date Of Birth">
-            </div>
+            <button type="submit" class="btn btn-success mx-2" (click)="addEmpFormClick()">Next</button>
         </div>
+        
 
 
 
         <!-- Form 2 -->
-        <div *ngIf="step == 2">
-            <h3 class="text-light bg-dark text-center m-3">Education Details</h3>
-
-            <div class="form-group mb-3">
-                <label for="eYop">Year Of Passing</label>
+        <div *ngIf="isEduFormVisible && !isAddEmpFormVisible && !isEmpHisFormVisible ">
+            <div >
+                <h3 class="text-light bg-dark text-center m-3">Education Details</h3>
     
-                <input type="text" class="form-control" id="eYop" placeholder="Year Of Passing"> 
+                <div class="form-group mb-3">
+                    <label for="eYop">Year Of Passing</label>
+        
+                    <input type="text" class="form-control" id="eYop" placeholder="Year Of Passing"> 
+                </div>
+        
+        
+                <div class="form-group mb-3">
+                    <label for="eInstituteName">Institute Name</label>
+        
+                    <input type="text" class="form-control" id="eInstituteName" placeholder="Institute Name">
+                </div>
+                
+        
+                <div class="form-group mb-3">
+                    <label for="ePercentage">Percentage</label>
+        
+                    <input type="text" class="form-control" id="ePercentage" placeholder="Percentage">
+                </div>
+    
             </div>
-    
-    
-            <div class="form-group mb-3">
-                <label for="eInstituteName">Institute Name</label>
-    
-                <input type="text" class="form-control" id="eInstituteName" placeholder="Institute Name">
-            </div>
-            
-    
-            <div class="form-group mb-3">
-                <label for="ePercentage">Percentage</label>
-    
-                <input type="text" class="form-control" id="ePercentage" placeholder="Percentage">
-            </div>
-
+            <button type="submit" class="btn btn-success mx-2" (click)="empEduFormClick()">Next</button>
+            <button type="submit" class="btn btn-success mx-2" (click)="gotoPrevious1()">Previous</button>
         </div>
 
 
         
         <!-- Form 3 -->
-        <div *ngIf="step == 3">
-            <h3 class="text-light bg-dark text-center border border-warning m-3">Employeement History</h3>
-
-            <div class="form-group mb-3">
-                <label for="ePreComName">Previous Company Name</label>
+        <div *ngIf="isEmpHisFormVisible">
+            <div >
+                <h3 class="text-light bg-dark text-center border border-warning m-3">Employeement History</h3>
     
-                <input type="text" class="form-control" id="ePreComName" placeholder="Company Name">
-            </div>
-            
+                <div class="form-group mb-3">
+                    <label for="ePreComName">Previous Company Name</label>
         
-            <div class="form-group mb-3">
-                <label for="ePreComRole">Role</label>
-    
-                <input type="text" class="form-control" id="ePreComRole" placeholder="Role">
-            </div>
+                    <input type="text" class="form-control" id="ePreComName" placeholder="Company Name">
+                </div>
+                
             
+                <div class="form-group mb-3">
+                    <label for="ePreComRole">Role</label>
         
-            <div class="form-group mb-3">
-                <label for="ePreComStartDate">Start Date</label>
-    
-                <input type="text" class="form-control" id="ePreComStartDate" placeholder="Start Date">
-            </div>
+                    <input type="text" class="form-control" id="ePreComRole" placeholder="Role">
+                </div>
+                
             
-            <div class="form-group mb-3">
-                <label for="ePreComEndDate">End Date</label>
-    
-                <input type="text" class="form-control" id="ePreComEndDate" placeholder="End Date">
+                <div class="form-group mb-3">
+                    <label for="ePreComStartDate">Start Date</label>
+        
+                    <input type="text" class="form-control" id="ePreComStartDate" placeholder="Start Date">
+                </div>
+                
+                <div class="form-group mb-3">
+                    <label for="ePreComEndDate">End Date</label>
+        
+                    <input type="text" class="form-control" id="ePreComEndDate" placeholder="End Date">
+                </div>
             </div>
+            <button type="submit" class="btn btn-success mx-2">Submit</button>
+            <button type="button" class="btn btn-success mx-2" (click)="gotoPrevious2()">Previous</button>
         </div>
         
     
-        <a class="btn btn-success mx-2" *ngIf="step != 1" (click)="previous()">Previous</a>
-        <button type="submit" class="btn btn-success mx-2" *ngIf="step != 3">Next</button>
-        <button type="submit" class="btn btn-success mx-2" *ngIf="step == 3">Submit</button>
+        <!-- <a class="btn btn-success mx-2" *ngIf="step != 1" (click)="previous()">Previous</a>
+        
+        <button type="submit" class="btn btn-success mx-2" *ngIf="step == 3">Submit</button> -->
         
     
         <button class="btn btn-primary" *ngIf="step == 3">Add Another</button>
