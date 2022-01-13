@@ -2,7 +2,7 @@
     
 <div class="container tb-10">
 
-    <form class="container" (ngSubmit)="submit()" [formGroup]="multistep">
+    <form class="container" (ngSubmit)="onSubmit()" [formGroup]="multistep">
 
         <!-- Form 1 -->
         <div *ngIf="isAddEmpFormVisible" formGroupName="personalDetails">
@@ -107,13 +107,7 @@
 
         <pre>{{multistep.value | json}}</pre> 
         <!-- <a class="btn btn-success mx-2" *ngIf="step != 1" (click)="previous()">Previous</a>
-        
         <button type="submit" class="btn btn-success mx-2" *ngIf="step == 3">Submit</button> -->
-        
-    
         <!-- <button class="btn btn-primary" *ngIf="step == 3">Add Another</button> -->
     </form>
-    
-    
-
 </div>

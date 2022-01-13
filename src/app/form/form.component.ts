@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { EmployeeServiceService } from '../employee-service.service';
 
 @Component({
   selector: 'app-form',
@@ -8,7 +9,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class FormComponent implements OnInit {
 
-  // step: any = 1;
+  employeeData:any
 
   // flags for show forms
   isAddEmpFormVisible: boolean = true;
@@ -36,10 +37,10 @@ export class FormComponent implements OnInit {
       endDate: new FormControl('')
     })
     
-  })
+  });
 
 
-  constructor() { }
+  constructor( private employeeService: EmployeeServiceService ) { }
 
   ngOnInit(): void {
   }
@@ -48,10 +49,21 @@ export class FormComponent implements OnInit {
   //   return this.multistep.controls['personalDetails']['controls'];
   // }
 
-  submit() {
-    if(this.multistep.controls['personalDetails'].invalid && this.isAddEmpFormVisible == true) {
-      return;
-    }
+  onSubmit() {
+    
+    // console.log(this.multistep.value);
+
+    this.employeeService.addEmployee(this.multistep.value).subscribe(
+      data=>{
+        alert("Employee Data Insert Successfully")
+      },
+      error=>{
+        alert("Sorry Unable to insert Employee Data")
+      }
+        
+      // response => console.log('Add Successfull!', response),
+      // error => console.log('Error!', error)
+    );
   }
 
   // previous() {
